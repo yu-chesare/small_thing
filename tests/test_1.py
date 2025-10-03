@@ -1,3 +1,5 @@
+import sys
+
 import pytest
 
 from bookstore.api import Bookstore
@@ -19,3 +21,8 @@ class Tests_book:
         response = bookstore.put_book()
         print(response)
         assert response.status_code == 200
+
+    @pytest.mark.skipif(condition="venv/bin/pytest" in sys.argv[0], reason="Do not run this test from console")
+    def test_to_skip(self):
+        print(sys.argv)
+        pass
